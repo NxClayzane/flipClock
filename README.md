@@ -1,2 +1,6 @@
 # Req 
-> `pygame & python ofc`
+
+> PYGAMES
+
+
+
