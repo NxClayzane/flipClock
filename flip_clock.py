@@ -1,5 +1,6 @@
 import pygame
 import time
+
 pygame.init()
 
 width, height = 600, 200
@@ -9,19 +10,21 @@ pygame.display.set_caption("Flip Clock")
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 
-digit_images = [
-    pygame.transform.scale(pygame.image.load('clock/0.png'), (64, 64)),
-    pygame.transform.scale(pygame.image.load('clock/1.png'), (64, 64)),
-    pygame.transform.scale(pygame.image.load('clock/2.png'), (64, 64)),
-    pygame.transform.scale(pygame.image.load('clock/3.png'), (64, 64)),
-    pygame.transform.scale(pygame.image.load('clock/4.png'), (64, 64)),
-    pygame.transform.scale(pygame.image.load('clock/5.png'), (64, 64)),
-    pygame.transform.scale(pygame.image.load('clock/6.png'), (64, 64)),
-    pygame.transform.scale(pygame.image.load('clock/7.png'), (64, 64)),
-    pygame.transform.scale(pygame.image.load('clock/8.png'), (64, 64)),
-    pygame.transform.scale(pygame.image.load('clock/9.png'), (64, 64))
-]
+digit_images = {
+    '0': None,
+    '1': None,
+    '2': None,
+    '3': None,
+    '4': None,
+    '5': None,
+    '6': None,
+    '7': None,
+    '8': None,
+    '9': None
+}
 
+for digit in digit_images:
+    digit_images[digit] = pygame.transform.scale(pygame.image.load(f'clock/{digit}.png').convert(), (64, 64))
 
 def display_time():
     current_time = time.strftime("%H:%M:%S")
@@ -31,8 +34,7 @@ def display_time():
         if digit == ':':
             x += 40
             continue
-        digit_value = int(digit)
-        window.blit(digit_images[digit_value], (x, 50))
+        window.blit(digit_images[digit], (x, 50))
         x += 70 
     pygame.display.flip()
 
