@@ -1,2 +1,2 @@
-# flipClock
- very basic flip clock made with pygames
+# Req 
+> `pygame & python ofc`
